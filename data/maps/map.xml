@@ -1,0 +1,4 @@
+<map file="osm.png" projection="Mercator" opacity="100">
+ <point x="0" y="0" geo="WGS84 45.87295 -73.48111"/>
+ <point x="1241" y="1043" geo="WGS84 45.84952 -73.44347"/>
+</map>

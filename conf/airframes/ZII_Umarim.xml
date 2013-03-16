@@ -1,11 +1,10 @@
-<!DOCTYPE airframe SYSTEM "../airframe.dtd">
+<!DOCTYPE airframe SYSTEM "airframe.dtd">
 
 <!--
-     Example airframe
-     Umarim Lite
+     Zephyr II with Umarim Lite
 -->
 
-<airframe name="Weasel">
+<airframe name="ZII">
 
   <firmware name="fixedwing">
     <define name="USE_I2C0"/>
@@ -15,13 +14,10 @@
 
     <target name="sim" board="pc"/>
     <target name="ap" board="umarim_lite_2.0"/>
-      <configure name="PERIODIC_FREQUENCY" value="120"/>
-      <configure name="AHRS_PROPAGATE_FREQUENCY" value="100"/>
-      <configure name="AHRS_CORRECT_FREQUENCY" value="100"/>
-      <define name="AHRS_TRIGGERED_ATTITUDE_LOOP"/>
+
     <subsystem name="radio_control" type="ppm"/>
 
-    <!-- Communication -->
+    <!-- Communication change -baud rate to 9600-->
     <subsystem name="telemetry" type="transparent"/>
 
     <!-- Actuators are automatically chosen according to board-->
@@ -36,9 +32,9 @@
 
 <!-- commands section -->
   <servos>
-    <servo name="MOTOR" no="7" min="1040" neutral="1040" max="2000"/>
-    <servo name="AILEVON_LEFT" no="6" min="1900" neutral="1543" max="1100"/>
-    <servo name="AILEVON_RIGHT" no="3" min="1100" neutral="1561" max="1900"/>
+    <servo name="MOTOR" no="2" min="1100" neutral="1100" max="1900"/>
+    <servo name="AILEVON_LEFT" no="1" min="1900" neutral="1500" max="1100"/>
+    <servo name="AILEVON_RIGHT" no="0" min="1100" neutral="1500" max="1900"/>
   </servos>
 
   <commands>
@@ -107,8 +103,8 @@
   </section>
 
   <section name="BAT">
-    <define name="MILLIAMP_AT_FULL_THROTTLE" value="10000."/>
-    <define name="CATASTROPHIC_BAT_LEVEL" value="9.3" unit="V"/>
+    <define name="MILLIAMP_AT_FULL_THROTTLE" value="55000."/>
+    <define name="CATASTROPHIC_BAT_LEVEL" value="12.8" unit="V"/>
   </section>
 
   <section name="MISC">
@@ -121,7 +117,7 @@
   </section>
 
   <section name="VERTICAL CONTROL" prefix="V_CTL_">
-    <define name="POWER_CTL_BAT_NOMINAL" value="11.1" unit="volt"/>
+    <define name="POWER_CTL_BAT_NOMINAL" value="16.8" unit="volt"/>
     <!-- outer loop proportional gain -->
     <define name="ALTITUDE_PGAIN" value="0.03"/>
     <!-- outer loop saturation -->
