@@ -1,6 +1,6 @@
 <!DOCTYPE flight_plan SYSTEM "flight_plan.dtd">
 
-<flight_plan alt="300" ground_alt="134" lat0="48.702963" lon0="7.794585" max_dist_from_home="700" name="ZII_belzowerth" security_height="25">
+<flight_plan alt="300" ground_alt="134" lat0="48.702963" lon0="7.794585" max_dist_from_home="700" name="ZII_belzowerth" security_height="25" home_mode_height="80">
   <header>
 #include "subsystems/navigation/nav_line.h"
 #include "subsystems/datalink/datalink.h"
