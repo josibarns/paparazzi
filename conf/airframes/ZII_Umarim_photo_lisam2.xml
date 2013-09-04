@@ -7,30 +7,36 @@
 	<!-- ************************* FIRMWARE ************************* -->
 
   <firmware name="fixedwing">
-    <define name="USE_I2C0"/>
     <define name="USE_I2C1"/>
+    <define name="USE_I2C2"/>
     <define name="AGR_CLIMB" />
+    <!--define name="USE_BAROMETER"/-->
 
     <target name="sim" board="pc"/>
-    <target name="ap"  board="umarim_lite_2.0">
+    <target name="ap"  board="lisa_m_2.0">
 	<!--camera trigger LED-->
 	<define name="USE_LED_3"  value="1"/>
-      	<define name="LED_3_BANK" value="0"/>
-      	<define name="LED_3_PIN"  value="10"/>
+      	<define name="LED_3_BANK" value="PC"/>
+      	<define name="LED_3_PIN"  value="4"/>
 	<!--ADCs-->
         <define name="USE_ADC"/>
-        <define name="USE_ADC_1"/>    <!-- accu voltage--> <!-- *******-->
-        <define name="USE_ADC_0"/>    <!-- motor current-->
-        <define name="ADC_CHANNEL_VSUPPLY"   value="ADC_1"/> <!-- *******-->
+        <define name="USE_ADC_3"/>    <!-- accu voltage--> <!-- *******-->
+        <define name="USE_ADC_2"/>    <!-- motor current-->
+        <define name="ADC_CHANNEL_VSUPPLY"   value="ADC_2"/> <!-- *******-->
+        <!--configure name="LISA_M_BARO" value="BARO_MS5611_SPI"/-->
+        <!-- higher frequency for aspirin imu, ouputs data at 100Hz -->
+        <configure name="PERIODIC_FREQUENCY" value="120"/>
+        <configure name="AHRS_PROPAGATE_FREQUENCY" value="100"/>
+        <configure name="AHRS_CORRECT_FREQUENCY" value="100"/>
+        <define name="AHRS_TRIGGERED_ATTITUDE_LOOP"/>
     </target>
  	
     <subsystem name="radio_control" type="ppm"/>
     <subsystem name="telemetry"     type="transparent"/>
-    <subsystem name="imu"           type="umarim"/>
+    <subsystem name="imu"           type="aspirin_v2.2"/>
     <subsystem name="ahrs"          type="float_dcm"/>
-        <!--define name="AHRS_USE_GPS_HEADING" value="1"/>
-	<configure name="USE_MAGNETOMETER"  value="0"/-->
-
+        <!--define name="AHRS_USE_GPS_HEADING" value="1"/-->
+	<configure name="USE_MAGNETOMETER"  value="0"/>
     <subsystem name="control"/>
     <subsystem name="navigation" type="extra"/>
     <subsystem name="gps"        type="ublox"/>
@@ -79,7 +85,7 @@
     <define name="DELAY_WITHOUT_GPS" value="2" unit="s"/>
     <define name="DEFAULT_THROTTLE" value="0.3" unit="%"/>
     <define name="DEFAULT_ROLL" value="0.1" unit="rad"/>
-    <define name="DEFAULT_PITCH" value="0.2" unit="rad"/>
+    <define name="DEFAULT_PITCH" value="0.1" unit="rad"/>
     <define name="HOME_RADIUS" value="100" unit="m"/>
   </section>
 
@@ -194,9 +200,9 @@
 	<!-- ************************* MISC ************************* -->
 
 <section name="BAT">
-    <define name="ADC_CHANNEL_CURRENT"    value="ADC_0"/>
+    <define name="ADC_CHANNEL_CURRENT"    value="ADC_2"/>
     <define name="MilliAmpereOfAdc(adc)"  value="Max(0,adc*87.30261)"/>
-    <define name="VOLTAGE_ADC_A"          value="0.050585938"/> <!-- *******-->
+    <define name="VOLTAGE_ADC_A"          value=".050585938"/> <!-- *******-->
     <define name="VOLTAGE_ADC_B"          value="0"/> <!-- ******* 15.70-->
     <define name="VoltageOfAdc(adc)"      value ="(VOLTAGE_ADC_A * adc + VOLTAGE_ADC_B)"/> <!-- *******-->
     <define name="CATASTROPHIC_BAT_LEVEL" value="12.8" unit="V"/> <!-- 3S lipo 3.1*3=9.3 -->
