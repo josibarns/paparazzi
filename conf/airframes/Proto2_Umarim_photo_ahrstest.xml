@@ -1,8 +1,8 @@
 <!DOCTYPE airframe SYSTEM "airframe.dtd">
 
-<!--Zephyr II with Umarim Lite-->
+<!--Proto2 with Umarim Lite-->
 
-<airframe name="ZII_photo_ahrs">
+<airframe name="Proto2_photo_ahrs">
 
 	<!-- ************************* FIRMWARE ************************* -->
 
