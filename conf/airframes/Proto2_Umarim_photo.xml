@@ -1,10 +1,10 @@
 <!DOCTYPE airframe SYSTEM "airframe.dtd">
 
 <!--
-     Zephyr II with Umarim Lite
+     Proto2 with Umarim Lite
 -->
 
-<airframe name="ZII_photo">
+<airframe name="Proto2_photo">
 
   <firmware name="fixedwing">
     <define name="USE_I2C0"/>
