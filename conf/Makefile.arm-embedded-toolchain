@@ -43,6 +43,7 @@ SIZE = $(GCC_BIN_PREFIX)-size
 GDB  = $(GCC_BIN_PREFIX)-gdb
 else
 # toolchain not found...
+$(error Error: arm-none-eabi-gcc cross-compiler not found! Recommended toolchain is https://launchpad.net/gcc-arm-embedded)
 endif
 endif
 

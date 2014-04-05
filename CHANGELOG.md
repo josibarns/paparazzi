@@ -1,3 +1,40 @@
+Paparazzi 5.0.4_stable
+======================
+
+Maintenance release
+
+- fix perl script compile_all_test_targets
+- add pcre lib to jsbsim, cleanup shell commands
+- fix InsideX for sectors (GetPosX and GetPosY in nav.h (FW) are in local coordinates)
+  #[602]  (https://github.com/paparazzi/paparazzi/issues/602)
+- stm32: enable correct error interrupts for i2c2 and i2c3
+
+Paparazzi 5.0.3_stable
+======================
+
+Maintenance release
+
+- fix Paparazzi Center on Mac OS (detection of child processes exitting)
+  [#290] (https://github.com/paparazzi/paparazzi/issues/290)
+- state interface: fix stateCalcHorizontalSpeedNorm_i
+- fix/improve dependency generation for building firmware
+- abort with meaningful error if ARM toolchain is not found
+
+
+Paparazzi 5.0.2_stable
+======================
+
+Maintenance release
+
+- add launch and noground options to pprzsim-launch
+- fixedwing: fix initialzation of trim commands, including yaw
+- fixedwing: fixes to use ins_alt_dot from ins_alt_float (with USE_BAROMETER)
+  [#511] (https://github.com/paparazzi/paparazzi/pull/511)
+- state interface: fix local/global coordinate validity checks
+- state interface: fix local ned/enu to ecef conversion
+- lib/ocaml: update leap_seconds to 16 (last one was on June 30, 2012)
+
+
 Paparazzi 5.0.1_stable
 ======================
 
