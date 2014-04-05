@@ -1,6 +1,6 @@
 <!DOCTYPE flight_plan SYSTEM "flight_plan.dtd">
 
-<flight_plan alt="300" ground_alt="171.6" home_mode_height="125" lat0="48.760863" lon0="7.770704" max_dist_from_home="1000" name="Weitbruch" security_height="25">
+<flight_plan alt="274" ground_alt="174" home_mode_height="100" lat0=" 39.434258" lon0="-77.539173" max_dist_from_home="700" name="ZII_belzowerth" security_height="25">
   <header>
 #include "subsystems/navigation/nav_line.h"
 #include "subsystems/datalink/datalink.h"
@@ -14,21 +14,21 @@
 #endif
 </header>
   <waypoints>
-    <waypoint name="HOME" x="-20.8" y="-35.2"/>
-    <waypoint name="STDBY" x="-43.3" y="-112.2"/>
-    <waypoint name="1" x="-330.4" y="337.9"/>
-    <waypoint name="2" x="-400.6" y="-228.6"/>
-    <waypoint name="MOB" x="-160.7" y="69.6"/>
-    <waypoint name="S2" x="-25.6" y="453.2"/>
-    <waypoint name="S1" x="-217.0" y="-355.7"/>
-    <waypoint name="_S2" x="-553.3" y="-11.2"/>
-    <waypoint name="_S3" x="-89.0" y="372.1"/>
-    <waypoint name="_S4" x="75.5" y="155.7"/>
-    <waypoint name="_S5" x="243.4" y="12.9"/>
-    <waypoint alt="201.0" name="AF" x="-79.1" y="9.7"/>
-    <waypoint alt="171.0" name="TD" x="-20.9" y="-72.9"/>
-    <waypoint name="_BASELEG" x="15.4" y="-60.4"/>
-    <waypoint name="CLIMB" x="-111.6" y="-137.0"/>
+    <waypoint name="HOME" x="-25.2" y="-197.3"/>
+    <waypoint name="STDBY" x="48.5" y="-121.7"/>
+    <waypoint name="1" x="-283.3" y="-137.0"/>
+    <waypoint name="2" x="321.5" y="-163.0"/>
+    <waypoint name="MOB" x="90.2" y="-170.0"/>
+    <waypoint name="S2" x="384.7" y="-402.3"/>
+    <waypoint name="S1" x="-270.9" y="86.8"/>
+    <waypoint name="_S2" x="170.9" y="16.3"/>
+    <waypoint name="_S3" x="442.3" y="-263.9"/>
+    <waypoint name="_S4" x="-1.6" y="-462.0"/>
+    <waypoint name="_S5" x="-389.9" y="-322.4"/>
+    <waypoint alt="184.0" name="AF" x="5.0" y="-127.5"/>
+    <waypoint alt="174.0" name="TD" x="35.3" y="-9.1"/>
+    <waypoint name="_BASELEG" x="161.6" y="-194.9"/>
+    <waypoint name="CLIMB" x="-31.6" y="-117.8"/>
   </waypoints>
   <sectors>
     <sector name="PolySector">
@@ -54,10 +54,10 @@
       <attitude roll="0" throttle="0" vmode="throttle"/>
     </block>
     <block group="home" key="t" name="Takeoff" strip_button="Takeoff (wp CLIMB)" strip_icon="takeoff.png">
-      <exception cond="GetPosAlt() > ground_alt+50" deroute="Standby"/>
+      <exception cond="GetPosAlt() > ground_alt+25" deroute="Standby"/>
       <set value="0" var="kill_throttle"/>
       <set value="0" var="autopilot_flight_time"/>
-      <go from="HOME" pitch="22" throttle="0.84" vmode="throttle" wp="CLIMB"/>
+      <go from="HOME" pitch="20" throttle="0.8" vmode="throttle" wp="CLIMB"/>
     </block>
     <block group="home" key="<Control>a" name="Standby" strip_button="Standby" strip_icon="home.png">
       <circle radius="nav_radius" wp="STDBY"/>
@@ -78,10 +78,10 @@
       <call fun="nav_line(WP_1, WP_2, nav_radius)"/>
     </block>
     <block group="extra_pattern" name="Survey S1-S2" strip_button="Survey (wp S1-S2)" strip_icon="survey.png">
-      <survey_rectangle grid="150" wp1="S1" wp2="S2"/>
+      <survey_rectangle grid="75" wp1="S1" wp2="S2"/>
     </block>
     <block group="extra_pattern" name="Poly Survey" strip_button="Survey" strip_icon="survey.png">
-      <call fun="InitializePolygonSurvey(WP_S1, 5, 150, 20)"/>
+      <call fun="InitializePolygonSurvey(WP_S1, 5, 75, 20)"/>
       <call fun="PolygonSurvey()"/>
     </block>
     <block group="extra_pattern" name="Path 1,2,S1,S2,STDBY" strip_button="Path (1,2,S1,S2,STDBY)" strip_icon="path.png">

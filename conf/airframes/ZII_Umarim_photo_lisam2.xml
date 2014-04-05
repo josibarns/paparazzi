@@ -130,6 +130,7 @@
   <section name="INS" prefix="INS_">
     <define name="ROLL_NEUTRAL_DEFAULT" value="RadOfDeg(0.765)"/> <!-- -0.02 on a bench flat -->
     <define name="PITCH_NEUTRAL_DEFAULT" value="RadOfDeg(5.938)"/> <!-- -0.02 on a bench with right angle of attack -->
+    <define name="BARO_SENS" value="22.3" integer="16"/>
   </section>
 
   <section name="AHRS" prefix="AHRS_">
@@ -195,6 +196,8 @@
    </load>
    <load name="photogrammetry_calculator.xml" />
    <load name="openlog.xml"/>
+   <load name="baro_ms5611_i2c.xml"/>
+   <load name="mag_hmc5843.xml"/>
 </modules>
 
 	<!-- ************************* MISC ************************* -->
