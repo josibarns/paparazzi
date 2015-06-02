@@ -31,7 +31,7 @@
         <!--define name="AHRS_USE_GPS_HEADING" value="1"/>
 	<configure name="USE_MAGNETOMETER"  value="0"/-->
 
-    <subsystem name="control" type="adaptive"/>
+    <subsystem name="control"/>
     <subsystem name="navigation" type="extra"/>
     <subsystem name="gps" type="ublox"/>
     <subsystem name="ins" type="alt_float"/>
@@ -123,7 +123,7 @@
 
   <section name="INS" prefix="INS_">
     <define name="ROLL_NEUTRAL_DEFAULT" value="0.00801099999999"/> <!-- -0.02 on a bench flat -->
-    <define name="PITCH_NEUTRAL_DEFAULT" value="0.0881570000001"/> <!-- -0.02 on a bench with right angle of attack -->
+    <define name="PITCH_NEUTRAL_DEFAULT" value="RadOfDeg(5.9)"/> <!-- -0.02 on a bench with right angle of attack -->
   </section>
 
   <section name="AHRS" prefix="AHRS_">
@@ -162,20 +162,12 @@
     <define name="COURSE_PRE_BANK_CORRECTION" value="0.99"/>
     <define name="ROLL_MAX_SETPOINT" value="RadOfDeg(45)"/>
     <define name="PITCH_MAX_SETPOINT" value="RadOfDeg(35)"/>
-    <define name="PITCH_MIN_SETPOINT" value="RadOfDeg(-35)"/>
-    <define name="ELEVATOR_OF_ROLL" value="2214"/>
-
-    <define name="ROLL_ATTITUDE_GAIN" value="6500"/>
-    <define name="ROLL_RATE_GAIN" value="1500"/>
-    <define name="ROLL_IGAIN" value="500"/>
-    <define name="ROLL_KFFA" value="500"/>
-    <define name="ROLL_KFFD" value="100"/>
-
-    <define name="PITCH_PGAIN" value="10000"/>
+    <define name="PITCH_MIN_SETPOINT" value="RadOfDeg(-30)"/>
+    <define name="PITCH_PGAIN" value="7000"/>
     <define name="PITCH_DGAIN" value="1.5"/>
-    <define name="PITCH_IGAIN" value="100"/>
-    <define name="PITCH_KFFA" value="0."/>
-    <define name="PITCH_KFFD" value="0."/>
+    <define name="ELEVATOR_OF_ROLL" value="2300"/>
+    <define name="ROLL_ATTITUDE_GAIN" value="4500"/>
+    <define name="ROLL_RATE_GAIN" value="1800"/>
   </section>
 
   <section name="AGGRESSIVE" prefix="AGR_">
@@ -197,7 +189,6 @@
    </load>
    <load name="photogrammetry_calculator.xml"/>
    <load name="openlog.xml"/>
-   <load name="zamboni_survey.xml"/>
 </modules>
 
 	<!-- ************************* MISC ************************* -->
@@ -238,11 +229,11 @@
   <section name="Photogrammetry" prefix="PHOTOGRAMMETRY_">
     <!-- Camera Parameters -->
     <define name="FOCAL_LENGTH" value="16" unit="mm"/>
-    <define name="SENSOR_WIDTH" value="15.6" unit="mm"/>                
+    <define name="SENSOR_WIDTH" value="23.4" unit="mm"/>                
     <!-- In direction of the plane's wings -->
-    <define name="SENSOR_HEIGHT" value="23.4" unit="mm"/>       
+    <define name="SENSOR_HEIGHT" value="15.6" unit="mm"/>       
     <!-- In direction of the plane's nose -->
-    <define name="PIXELS_WIDTH" value="3264" unit=""/>
+    <define name="PIXELS_WIDTH" value="4912" unit=""/>
 
     <!-- Flight Safety Parameters -->
     <define name="HEIGHT_MIN" value="50" unit="m"/>

@@ -17,11 +17,6 @@
 	<define name="USE_LED_3" value="1"/>
       	<define name="LED_3_BANK" value="0"/>
       	<define name="LED_3_PIN" value="10"/>
-	<!--ADCs-->
-        <define name="USE_ADC"/>
-        <define name="USE_ADC_1"/>    <!-- accu voltage--> <!-- *******-->
-        <define name="USE_ADC_0"/>    <!-- motor current-->
-        <define name="ADC_CHANNEL_VSUPPLY" value="ADC_1"/> <!-- *******-->
     </target>
  	
     <subsystem name="radio_control" type="ppm"/>
@@ -66,8 +61,8 @@
     <let var="aileron" value="@ROLL * AILEVON_AILERON_RATE"/>
     <let var="elevator" value="@PITCH * AILEVON_ELEVATOR_RATE"/>
     <set servo="MOTOR" value="@THROTTLE"/>
-    <set servo="AILEVON_LEFT" value="$elevator + $aileron"/>
-    <set servo="AILEVON_RIGHT" value="$elevator - $aileron"/>
+    <set servo="AILEVON_LEFT" value="$elevator - $aileron"/>
+    <set servo="AILEVON_RIGHT" value="$elevator + $aileron"/>
   </command_laws>
 
   <section name="AUTO1" prefix="AUTO1_">
@@ -122,7 +117,7 @@
   </section>
 
   <section name="INS" prefix="INS_">
-    <define name="ROLL_NEUTRAL_DEFAULT" value="0.00801099999999"/> <!-- -0.02 on a bench flat -->
+    <define name="ROLL_NEUTRAL_DEFAULT" value="-0.013352"/> <!-- -0.02 on a bench flat -->
     <define name="PITCH_NEUTRAL_DEFAULT" value="0.0881570000001"/> <!-- -0.02 on a bench with right angle of attack -->
   </section>
 
@@ -203,11 +198,7 @@
 	<!-- ************************* MISC ************************* -->
 
 <section name="BAT">
-    <define name="ADC_CHANNEL_CURRENT" value="ADC_0"/>
-    <define name="MilliAmpereOfAdc(adc)" value="Max(0,adc*87.30261)"/>
-    <define name="VOLTAGE_ADC_A" value="0.050585938"/> <!-- *******-->
-    <define name="VOLTAGE_ADC_B" value="0"/> <!-- ******* 15.70-->
-    <define name="VoltageOfAdc(adc)" value="(VOLTAGE_ADC_A * adc + VOLTAGE_ADC_B)"/> <!-- *******-->
+    <define name="MILLIAMP_AT_FULL_THROTTLE" value="57000."/>
     <define name="CATASTROPHIC_BAT_LEVEL" value="12.8" unit="V"/> <!-- 3S lipo 3.1*3=9.3 -->
     <define name="CRITIC_BAT_LEVEL" value="13" unit="V"/>
     <define name="LOW_BAT_LEVEL" value="14" unit="V"/>
@@ -230,9 +221,9 @@
   <section name="DIGITAL_CAMERA" prefix="DC_">
     <define name="RELEASE" value="LED_ON"/>
     <define name="PUSH" value="LED_OFF"/>
-    <define name="AUTOSHOOT_QUARTERSEC_PERIOD" value="3" unit="quarter_second"/>
-    <define name="AUTOSHOOT_METER_GRID" value="70" unit="meter"/>
-    <!--define name="AUTOSHOOT_GPS_DIST" value="70" unit="m"/!-->
+    <define name="AUTOSHOOT_QUARTERSEC_PERIOD" value="4" unit="quarter_second"/>
+    <define name="AUTOSHOOT_METER_GRID" value="30" unit="meter"/>
+    <!--define name="AUTOSHOOT_GPS_DIST" value="30" unit="m"/!-->
   </section>
 
   <section name="Photogrammetry" prefix="PHOTOGRAMMETRY_">

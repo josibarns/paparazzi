@@ -1,6 +1,6 @@
 <!DOCTYPE flight_plan SYSTEM "flight_plan.dtd">
 
-<flight_plan alt="274" ground_alt="174" home_mode_height="100" lat0=" 39.434258" lon0="-77.539173" max_dist_from_home="700" name="ZII_belzowerth" security_height="25">
+<flight_plan alt="274" ground_alt="174" lat0="39.331935" lon0="-76.919524" home_mode_height="150" max_dist_from_home="700" name="Marriotsville" security_height="25">
   <header>
 #include "subsystems/navigation/nav_line.h"
 #include "subsystems/datalink/datalink.h"
@@ -57,10 +57,16 @@
       <attitude roll="0" throttle="0" vmode="throttle"/>
     </block>
     <block group="home" key="t" name="Takeoff" strip_button="Takeoff (wp CLIMB)" strip_icon="takeoff.png">
-      <exception cond="GetPosAlt() > ground_alt+25" deroute="Standby"/>
+      <exception cond="GetPosAlt() > ground_alt+50" deroute="Standby"/>
       <set value="0" var="kill_throttle"/>
       <set value="0" var="autopilot_flight_time"/>
-      <go from="HOME" pitch="20" throttle="0.8" vmode="throttle" wp="CLIMB"/>
+    <go from="HOME" pitch="20" throttle="0.8" vmode="throttle" wp="CLIMB"/>
+    </block>
+    <block group="home" key="R" name="AUTOTAKEOFF" strip_button="AutoTakeoff">
+      <exception cond="GetPosAlt() > ground_alt+50" deroute="Standby"/>
+      <set value="0" var="kill_throttle"/>
+      <set value="0" var="autopilot_flight_time"/>
+       <attitude pitch="25" roll="0" throttle="0.8" vmode="throttle"/> 
     </block>
     <block group="home" key="<Control>a" name="Standby" strip_button="Standby" strip_icon="home.png">
       <circle radius="nav_radius" wp="STDBY"/>
@@ -71,6 +77,9 @@
     <block group="base_pattern" name="Oval 1-2" strip_button="Oval (wp 1-2)" strip_icon="oval.png">
       <oval p1="1" p2="2" radius="nav_radius"/>
     </block>
+    <block group="base_pattern" name="ROLL TEST" strip_button="ROLL 30" strip_icon="circle.png">
+      <attitude roll="30" alt="ground_alt+50"/>
+    </block>
     <block group="base_pattern" name="MOB" strip_button="Turn around here" strip_icon="mob.png">
       <call fun="NavSetWaypointHere(WP_MOB)"/>
       <set value="DEFAULT_CIRCLE_RADIUS" var="nav_radius"/>
@@ -80,14 +89,17 @@
       <call fun="nav_line_init()"/>
       <call fun="nav_line(WP_1, WP_2, nav_radius)"/>
     </block>
+    <block group="base_pattern" name="Straight flight" strip_button="Straight flight" strip_icon="line.png">
+     <attitude roll="0" vmode="throttle" throttle="0.5"/>
+    </block>
     <block group="extra_pattern" name="Survey S1-S2" strip_button="Survey (wp S1-S2)" strip_icon="survey.png">
       <survey_rectangle grid="75" wp1="S1" wp2="S2"/>
     </block>
-   <block name="ZamboniSurvey1" strip_button="Zamboni1" strip_icon="survey.png">
+    <block name="ZamboniSurvey1" strip_button="Zamboni1" strip_icon="survey.png">
       <call fun="init_zamboni_survey(WP_Z_CENTER, WP_Z1_DIR, 200, 40, 7, 290)"/>
       <call fun="zamboni_survey()"/>
     </block>
-   <block name="ZamboniSurvey2" strip_button="Zamboni2" strip_icon="survey.png">
+    <block name="ZamboniSurvey2" strip_button="Zamboni2" strip_icon="survey.png">
       <call fun="init_zamboni_survey(WP_Z_CENTER, WP_Z2_DIR, 200, -40, 7, 290)"/>
       <call fun="zamboni_survey()"/>
     </block>

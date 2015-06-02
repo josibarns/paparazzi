@@ -142,5 +142,12 @@
     <define name="DEFAULT_PITCH" value="0" unit="deg"/>
     <define name="HOME_RADIUS" value="90" unit="m"/>
   </section>
-
+<modules>
+    <load name="gps_ubx_ucenter.xml">
+	<define name="DEBUG_GPS_UBX_UCENTER" value="TRUE" />
+    </load>
+</modules>
 </airframe>
+
+
+

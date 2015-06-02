@@ -225,6 +225,7 @@ void init_ap( void ) {
   mcu_int_enable();
 
 #if defined DATALINK
+//sys_time_usleep(5000000);
 #if DATALINK == XBEE
   xbee_init();
 #endif
