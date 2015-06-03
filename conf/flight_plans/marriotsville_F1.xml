@@ -47,13 +47,13 @@
       <exception cond="GetPosAlt() > ground_alt+50" deroute="Standby"/>
       <set value="0" var="kill_throttle"/>
       <set value="0" var="autopilot_flight_time"/>
-      <go from="HOME" pitch="20" throttle="0.8" vmode="throttle" wp="CLIMB"/>
+      <go from="HOME" pitch="48" throttle="1" vmode="throttle" wp="CLIMB"/>
     </block>
     <block group="home" key="R" name="AUTOTAKEOFF" strip_button="AutoTakeoff">
       <exception cond="GetPosAlt() > ground_alt+50" deroute="Standby"/>
       <set value="0" var="kill_throttle"/>
       <set value="0" var="autopilot_flight_time"/>
-      <attitude pitch="25" roll="0" throttle="1" vmode="throttle"/>
+      <attitude pitch="48" roll="0" throttle="1" vmode="throttle"/>
     </block>
     <block group="home" key="<Control>a" name="Standby" strip_button="Standby" strip_icon="home.png">
       <circle radius="nav_radius" wp="STDBY"/>
